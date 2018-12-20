@@ -15,7 +15,7 @@
         </discriminator>
         <sift>
             <appender name="FILE-${testname}" class="ch.qos.logback.core.FileAppender">
-                <file>${testname}-${bySecond}.log</file>
+                <file>logs/${testname}-${bySecond}.log</file>
                 <encoder>
                     <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
                 </encoder>
