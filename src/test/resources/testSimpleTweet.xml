@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Simple tweet test" verbose="0" >
+    <test name="send message and check it" >
+        <classes>
+            <class name="tests.TestSimpleTweet"/>
+        </classes>
+    </test>
+</suite>
