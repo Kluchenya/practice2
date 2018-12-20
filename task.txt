@@ -1,0 +1,62 @@
+1) завести 2 тестовых аккаунта на твиттере и подружить их
+2) реализовать следующие тесты (используем знания о юнит фреймворках)
+- проверка создания простого твита
+- проверка создания твита с картинкой
+- комментарий к верхнему твиту
+- отправка личного сообщения на другой аккаунт, с проверкой что оно дошло
+
+не забываем что перед тем как взаимодействовать с элементом, мы должны убедиться что/подождать
+пока он будет присутствовать на странице, будет видим и будет активен
+стараемся писать нормальные локаторы
+twitt with image //img[@data-aria-label-part]
+message (//li[@data-is-oto='true'])[8]//p
+подсветка кому отправить сообщение "//ul[@id='DMComposeTypeaheadSuggestions'][1]/li[2]/div[1]//b[@class='fullname']"
+
+------------------------------------------------------------------------------------------------------------------
+по CI (для вашей твиттер автоматизации):
+- установить Jenkins
+- создать job (freestyle project)
+  - параметризировать, параметр: git branch name
+  - job должна запускать тесты (логично что и собирать)
+  - extended: pipline для запуска тестов 3 раза
+------------------------------------------------------------------------------------------------------------------
+  final
+  Тест кейсы для финального испытания
+  Automate following things:
+  - login to twitter
+      - correct email and password / check login
+      - incorrect email, incorrect password / check message
+      - incorrect username, incorrect password / check message
+      - login, close all twitter tabs (not browser), open twitter again / check login
+  - logout on twitter
+      - do logout / check logout
+  - settings
+      - change Language to Russian and change back to English // check some translations
+          - extended: implement some data driven approach or at least think on how to implement it
+  - twitting
+      - create following tweets / check correct tweet added
+          - simple text tweet
+          - text + image tweet
+          - text + several images
+          - text + some link
+              - correct link
+              - incorrect link
+          - text + some gif (first found for simple word)
+          - tweet with comment
+
+          - implement data driven approach for creating tweets
+              - think about format of test cases data source file/files
+              - extended option: placeholder in text field (in data file) for in test processing
+                  - like $uniq$ for generating random unique string for tweet "uniqualization"
+                  - $rand1-10$ or $iterator$
+              - extended: add comments adding functionality (to creating tweet) in the same way
+
+      - delete tweet / check tweet deleted
+  - messaging
+      - send message to another user / check message received
+
+
+
+
+
+

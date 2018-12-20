@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="message test" verbose="0" >
+    <parameter name="login_1" value="7803691@gmail.com"/>
+    <parameter name="password_1" value="1q2w3e"/>
+    <parameter name="message" value="hi testAccount2d"/>
+    <parameter name="login_2" value="7835177@gmail.com"/>
+    <parameter name="password_2" value="1q2w3e"/>
+    <test name="send message and check it" >
+        <classes>
+            <class name="tests.TestSendMessage"/>
+            <class name="tests.TestMessageDelivered"/>
+        </classes>
+    </test>
+</suite>

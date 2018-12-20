@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'com.kdv'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.5'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+}
+
+test{
+    useTestNG(){
+        suites "src/test/resources/testng.xml"
+    }
+}
+
