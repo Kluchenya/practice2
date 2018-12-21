@@ -3,7 +3,7 @@
 <suite name="message test with image" verbose="0" >
     <test name="send message and image and check it" >
         <classes>
-            <class name="tests.TestTweetWithImage"/>
+            <class name="tests.TestLogin"/>
         </classes>
     </test>
 </suite>
