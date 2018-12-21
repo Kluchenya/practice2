@@ -22,7 +22,7 @@ dependencies {
 
 test{
     useTestNG(){
-        suites "src/test/resources/testWithImage.xml"
+        suites "src/test/resources/testLogin.xml"
     }
 }
 
