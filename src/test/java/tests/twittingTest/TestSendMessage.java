@@ -12,7 +12,7 @@ public class TestSendMessage extends FunctionalTest {
     @Test
     @Parameters({"login_1" ,"password_1","message"})
     public void testSendMessage(@Optional("7803691@gmail.co") String login, @Optional("1q2w3e") String password,@Optional("Optional") String message) {
-        app.login(login, password);
+        app.login(app.user);
         app.tweetPage.newMessage();
 
         app.messagePage.openMessageWindow();

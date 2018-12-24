@@ -10,7 +10,7 @@ public class TestSettingsLangToRus extends FunctionalTest {
 
     @Test
     public void SettingsLangTest(){
-        app.login("7803691@gmail.com", "1q2w3e");
+        app.login(app.user);
         app.tweetPage.changeLangSettings("1q2w3e", "ru");
         Assert.assertEquals(alertMsg, app.tweetPage.getTextFromAlertAfterChange());
     }

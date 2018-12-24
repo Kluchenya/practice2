@@ -8,7 +8,7 @@ public class TestDeleteTweet extends FunctionalTest {
 
     @Test
     public void deleteLastTweetTest(){
-        app.login("7803691@gmail.com", "1q2w3e");
+        app.login(app.user);
         String countOfTweetBefore = app.servicePage.getCountOfTweets();
         app.tweetPage.deleteLastTweet();
         app.servicePage.refereshPage();

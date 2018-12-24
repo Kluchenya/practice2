@@ -1,5 +1,7 @@
 package tests.loginTest;
 
+import data.DataForTest;
+import model.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
@@ -8,13 +10,13 @@ import webdriver.DriverManager;
 
 public class TestLoginCloseTab extends FunctionalTest {
 
-    @Test
-    public void testLoginCloseTab(){
-        app.login("7803691@gmail.com", "1q2w3e");
+    @Test(dataProvider = "dataForCorrectLogin", dataProviderClass = DataForTest.class)
+    public void testLoginCloseTab(User user){
+        app.login(user);
         JSHelper.OpenNewTab();
         app.servicePage.switchTab(0);
         app.servicePage.closeTab();
-        app.servicePage.switchTab(1);
+        app.servicePage.switchTab(0);
         DriverManager.getInstance().getDriver().get("https://twitter.com/");
         Assert.assertEquals("Twitter", DriverManager.getInstance().getDriver().getTitle());
     }

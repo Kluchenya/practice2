@@ -1,5 +1,6 @@
 package setup;
 
+import model.User;
 import pages.*;
 
 
@@ -11,6 +12,14 @@ public class ApplicationManager {
     public ReTweetPage reTweetPage = new ReTweetPage();
     public ServicePage servicePage = new ServicePage();
     public ErrorPage errorPage = new ErrorPage();
+    public User user = new User().withLogin("7803691@gmail.com").withPassword("1q2w3e");
+
+    public void login(User user) {
+        firstPage.clickOnLogin();
+        loginPage.typeUserName(user.getLogin());
+        loginPage.typePassword(user.getPassword());
+        loginPage.submitLogin();
+    }
 
     public void login(String login, String password) {
         firstPage.clickOnLogin();
@@ -18,4 +27,5 @@ public class ApplicationManager {
         loginPage.typePassword(password);
         loginPage.submitLogin();
     }
+
 }
