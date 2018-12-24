@@ -3,12 +3,10 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import utils.JSHelper;
+import org.openqa.selenium.support.ui.Select;
 import utils.Logging.Log;
 
-import java.util.List;
-
-import static utils.JSHelper.*;
+import static utils.JSHelper.HighlightElement;
 
 public class TweetPage extends PageObject {
 
@@ -16,18 +14,33 @@ public class TweetPage extends PageObject {
     private WebElement tweetBoxSmall;
     @FindBy(id = "tweet-box-home-timeline")
     private WebElement tweetBoxBig;
-    @FindBy(xpath="//button[contains(@class,'tweet-action EdgeButton EdgeButton--primary js-tweet-btn')]")
+    @FindBy(xpath="(//form/div[3]/div[2])[1]/button")
     private WebElement tweetButton;
-    @FindBy(xpath="//div[contains(@class,'home-tweet-box')]/form/div[3]/div[1]/span[1]")
+    @FindBy(xpath="//div[@id='timeline']/div[2]/div/form/div[3]/div[1]/span[1]/div/div/label/input")
     private WebElement addImageButton;
-    @FindBy(xpath="//div[contains(@class,'home-tweet-box')]/form/div[3]/div[1]/span[2]")
+    @FindBy(xpath = "//img[contains(@class,'ComposerThumbnail-image')]")
+    private WebElement previewImage;
+    //Block GIG
+    @FindBy(xpath="//div[@id='timeline']/div[2]/div/form/div[3]/div[1]/span[2]/div/button")
     private WebElement addGifButton;
-    @FindBy(xpath ="//div[contains(@class,'home-tweet-box')]/form/div[3]/div[1]/span[2]//div[contains(@class,'FoundMediaSearch-results')]")
-    private WebElement gifSearchBox;
-    @FindBy(xpath="(//li[@data-item-type='tweet'])[1]//div[2]/p")
+    @FindBy(xpath = "//div[@id='timeline']/div[2]/div/form/div[3]/div[1]/span[2]//input")
+    private WebElement inputGifText;
+    @FindBy(xpath ="(//div[@id='timeline']/div[2]/div/form/div[3]/div[1]/span[2]/div/div/div[2]//div[contains(@class,'FoundMediaSearch-column')][1]/div/button)[1]")
+    private WebElement firstGif;
+    @FindBy(xpath = "//img[contains(@class,'ComposerThumbnail-image')]")
+    private WebElement previewGif;
+    @FindBy(xpath = "//div[contains(@class,'Icon Icon--close Icon--smallest')]")
+    private WebElement closeGifPreview;
+    @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]/div/div[2]/div[3]//video")
+    private WebElement gifInLastTweet;
+
+    //Service block
+    @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]//div[2 ]/p")
     private WebElement lastTweetText;
-    @FindBy(xpath="//div[@id='timeline']/div[4]/div[2]/ol/li")
-    private List<WebElement> twitts;
+    @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]//div[2 ]/p/a")
+    private WebElement lastTweetLink;
+
+    //Buttons
     @FindBy(xpath="(//div[@class='stream-item-footer']/div[2]/div[2]/button)[1]")
     private WebElement reTweetButton;
     @FindBy(className="global-dm-nav")
@@ -38,6 +51,7 @@ public class TweetPage extends PageObject {
     private WebElement logoutButton;
     @FindBy(className="StaticLoggedOutHomePage-buttonLogin")
     private WebElement firstButtonSmartLogin;
+
     @FindBy(className="new-tweets-bar")
     private WebElement newTweetBar;
     @FindBy(xpath="//div[contains(@class,'timeline-end has-items')]//button")
@@ -45,6 +59,39 @@ public class TweetPage extends PageObject {
     @FindBy(xpath="(//li[@data-item-type='tweet'])[1]//img[@data-aria-label-part]")
     private WebElement lastAddedImage;
 
+    //Block for change lang settings
+    @FindBy(xpath = "//a[contains(@class,'js-nav') and contains(@data-nav,'settings')]")
+    private WebElement settingsButton;
+    @FindBy(xpath = "//select[@id='user_lang']")
+    private WebElement langSelect;
+    @FindBy(id = "settings_save")
+    private WebElement saveSettingsButton;
+    @FindBy(xpath = "//div[@id='password_dialog-dialog']//input")
+    private WebElement inputPasswordOnChange;
+    @FindBy(xpath = "//div[@id='password_dialog-dialog']//button[@id='save_password']")
+    private WebElement saveChangesButton;
+    @FindBy(xpath = "//div[@id='settings-alert-box']/h4")
+    private WebElement alertAfterChangeLng;
+
+
+    //Block for delete last tweet
+    @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]//span[contains(@class,'Icon--caretDownLight Icon--small')]")
+    private WebElement tweetMenuButton;
+    @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]/div[1]/div[2]/div[1]/div/div/div/ul/li[6]")
+    private WebElement deleteInMenuTweetButton;
+    @FindBy(xpath = "//div[contains(@id,'delete-tweet-dialog-body')]/../div[4]/button[2]")
+    private WebElement deleteInModalWinButton;
+    @FindBy(xpath= "//div[@id='message-drawer']//span[contains(@class,'message-text')]")
+    private WebElement messageAboutDeletion;
+
+
+
+    public void deleteLastTweet(){
+        this.tweetMenuButton.click();
+        this.deleteInMenuTweetButton.click();
+        this.deleteInModalWinButton.click();
+        wait.until(ExpectedConditions.visibilityOf(messageAboutDeletion));
+    }
 
     public void writeSimpleTweet(String message){
         this.tweetBoxSmall.click();
@@ -53,13 +100,27 @@ public class TweetPage extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(this.newTweetBar));
     }
 
-    public void writeTweetWithImage(String message, String pathToFile){
+    public void writeTweetWithImage(String message, String pathToFile) {
         this.tweetBoxSmall.click();
         this.tweetBoxBig.sendKeys(message);
         this.addImageButton.sendKeys(pathToFile);
+        wait.until(ExpectedConditions.visibilityOf(this.previewImage));
         this.tweetButton.click();
         wait.until(ExpectedConditions.visibilityOf(this.newTweetBar));
     }
+
+    public void writeTweetWithGif(String message, String gifText){
+        this.tweetBoxSmall.click();
+        this.tweetBoxBig.sendKeys(message);
+        this.addGifButton.click();
+        this.inputGifText.sendKeys(gifText);
+        this.firstGif.click();
+        wait.until(ExpectedConditions.visibilityOf(this.closeGifPreview));
+        this.tweetButton.click();
+        wait.until(ExpectedConditions.visibilityOf(this.gifInLastTweet));
+        wait.until(ExpectedConditions.visibilityOf(this.newTweetBar));
+    }
+
 
     public void reTweet(){
         this.reTweetButton.click();
@@ -73,6 +134,10 @@ public class TweetPage extends PageObject {
         return this.lastTweetText.getText();
     }
 
+    public void clickOnLinkLastTweet(){
+        this.lastTweetLink.click();
+    }
+
     public Boolean imagePresntInTwitt(){
         WebElement image = this.lastAddedImage;
         if(image.isDisplayed()){
@@ -84,15 +149,18 @@ public class TweetPage extends PageObject {
         }
     }
 
-    public void writeTweetWithGif(String message){
-        this.tweetBoxSmall.click();
-        this.tweetBoxBig.sendKeys(message);
-        this.addGifButton.click();
-        JSHelper.HighlightElement(gifSearchBox);
-        JSHelper.MoveMouseToPosition(615,483);
-        wait.until(ExpectedConditions.visibilityOf(gifSearchBox));
-        this.tweetButton.click();
-        wait.until(ExpectedConditions.visibilityOf(this.newTweetBar));
+    public void changeLangSettings(String password, String lang){
+        this.userMenuButton.click();
+        this.settingsButton.click();
+        new Select(this.langSelect).selectByValue(lang);
+        this.saveSettingsButton.click();
+        this.inputPasswordOnChange.sendKeys(password);
+        this.saveChangesButton.click();
+    }
+
+
+    public String getTextFromAlertAfterChange(){
+        return this.alertAfterChangeLng.getText();
     }
 
     public void logout(){
@@ -115,15 +183,4 @@ public class TweetPage extends PageObject {
             Log.error("Error wait element" + this.firstButtonSmartLogin);
         }
     }
-
-
-    public Integer getCountOfTwitts() {
-        ScrollPageDown();
-        wait.until(ExpectedConditions.visibilityOf(this.endOfPage));
-        ScrollPageUp();
-        return twitts.size();
-    }
-
-
-
 }

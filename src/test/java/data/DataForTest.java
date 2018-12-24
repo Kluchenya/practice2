@@ -49,6 +49,4 @@ public class DataForTest {
                 // {"7835177@gmail.com","1q2w3e","Message from testAccount2"}
         };
     }
-
-
 }

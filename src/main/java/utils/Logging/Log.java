@@ -8,7 +8,7 @@ public class Log {
     private static Logger Log = LoggerFactory.getLogger(Log.class);
 
     public static void info(String message){
-        Log.info(message);
+        Log.debug(message);
     }
 
     public static void debug(String message){
@@ -16,7 +16,7 @@ public class Log {
     }
 
     public static void error(String message){
-        Log.info(message);
+        Log.error(message);
     }
 
     public static void warn (String message){

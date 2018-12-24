@@ -1,4 +1,4 @@
-package tests;
+package tests.twittingTest;
 
 import org.testng.Assert;
 import org.testng.annotations.Optional;

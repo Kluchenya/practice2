@@ -15,6 +15,10 @@ public class LoginPage extends PageObject {
     private WebElement password;
     @FindBy(className = "EdgeButtom--medium")
     private WebElement loginButton;
+    @FindBy(xpath = "//span[contains(@class,'message-text')]")
+    private WebElement errorTextMessage;
+    @FindBy(css = "body")
+    private WebElement documentBody;
 
     public void typeUserName(String userName) {
         try {
@@ -44,14 +48,12 @@ public class LoginPage extends PageObject {
         }
     }
 
-    public void submitSmartLoginExpectingFailure() {
-        this.loginButton.submit();
-    }
-
     public void loginAs(String userName, String password) {
         typeUserName(userName);
         typePassword(password);
     }
 
-
+    public String getErrorMessage(){
+        return this.errorTextMessage.getText();
+    }
 }

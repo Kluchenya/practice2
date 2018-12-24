@@ -33,6 +33,7 @@ public class FunctionalTest {
         Log.info("Start test " + method.getName() + " with parameters - " + Arrays.asList(param).toString());
     }
 
+
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result, Method method, Object[] param) {
         if (ITestResult.FAILURE == result.getStatus()) {

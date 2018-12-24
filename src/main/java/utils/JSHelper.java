@@ -15,6 +15,19 @@ public class JSHelper {
 
     private static WebDriver  driver = DriverManager.getInstance().getDriver();
 
+
+    //*Method open new tab in browser
+
+    public static void OpenNewTab(){
+        Log.info("Open new tab in browser");
+        ((JavascriptExecutor)driver).executeScript("window.open()");
+    }
+
+    public static void CloseCurrentTab(){
+        Log.info("Close current tab");
+        ((JavascriptExecutor)driver).executeScript("window.close()");
+    }
+
     //Method takes screenshot on error
     public static void TakeScreenShot(String methodName){
         String pathToScreenshot = "d:\\Project\\practice2\\screenshots\\";

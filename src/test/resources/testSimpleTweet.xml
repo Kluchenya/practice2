@@ -3,7 +3,7 @@
 <suite name="Simple tweet test" verbose="0" >
     <test name="send message and check it" >
         <classes>
-            <class name="tests.TestSimpleTweet"/>
+            <class name="tests.twittingTest.TestSimpleTweet"/>
         </classes>
     </test>
 </suite>

@@ -1,4 +1,4 @@
-package tests;
+package tests.twittingTest;
 
 
 import data.DataForTest;
