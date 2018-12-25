@@ -7,7 +7,7 @@
     "pathToImage_1": "d:/project/practice2/src/test/resources/img/123.jpg",
     "pathToImage_2": "d:/project/practice2/src/test/resources/img/qa.png",
     "comment": "someComment",
-    "gifImageText": "car",
+    "gifImageText": "armor",
     "corrLink": "https://www.onliner.by/",
     "InCorrLink": "https://www.onliner.cy",
     "errMsgInLinkTest": "ERR_NAME_NOT_RESOLVED"

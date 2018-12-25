@@ -1,4 +1,4 @@
-package setup;
+package business.app_setup;
 
 import business.model.Login;
 import business.pages.*;

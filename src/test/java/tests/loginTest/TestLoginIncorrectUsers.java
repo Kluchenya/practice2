@@ -3,7 +3,7 @@ package tests.loginTest;
 import business.model.Login;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import setup.FunctionalTest;
+import test_setup.FunctionalTest;
 import tests.loginTest.data.DataForLoginTest;
 
 public class TestLoginIncorrectUsers extends FunctionalTest {

@@ -1,14 +1,15 @@
-package setup;
+package test_setup;
 
+import business.app_setup.ApplicationManager;
+import core.utils.Logging.Log;
+import core.utils.Logging.TestLogHelper;
+import core.utils.PropertyManager;
+import core.webdriver.DriverManager;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import core.utils.Logging.Log;
-import core.utils.PropertyManager;
-import core.utils.Logging.TestLogHelper;
-import core.webdriver.DriverManager;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -23,13 +24,13 @@ public class FunctionalTest {
 
     @BeforeClass
     public void setUp() throws Exception {
-        DriverManager.getInstance().setUpDriver();
         TestLogHelper.startTestLogging(getTestId());
+        DriverManager.getInstance().getDriver().get(PropertyManager.getInstance().getUrl());
     }
 
     @BeforeMethod
     public void setUpLogin(Method method, Object[] param) {
-        DriverManager.getInstance().getDriver().get(PropertyManager.getInstance().getUrl());
+
         Log.info("Start test " + method.getName() + " with parameters - " + Arrays.asList(param).toString());
     }
 

@@ -3,7 +3,7 @@ package tests.settingsTest;
 import business.model.LangSettings;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import setup.FunctionalTest;
+import test_setup.FunctionalTest;
 import tests.settingsTest.data.LangSettingsData;
 
 public class TestSettingsLangToRus extends FunctionalTest {

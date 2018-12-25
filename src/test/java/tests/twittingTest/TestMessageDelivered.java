@@ -3,7 +3,7 @@ package tests.twittingTest;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import setup.FunctionalTest;
+import test_setup.FunctionalTest;
 import core.webdriver.DriverManager;
 
 //@Listeners(ScreenShotOnFailure.class)

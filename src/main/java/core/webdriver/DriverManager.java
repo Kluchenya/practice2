@@ -9,7 +9,6 @@ import core.utils.Logging.WebDriverLogger;
 
 import java.util.concurrent.TimeUnit;
 
-
 public class DriverManager{
 
     private static WebDriver driver;
@@ -38,18 +37,15 @@ public class DriverManager{
                 driver = new EventFiringWebDriver(new FirefoxDriver()).register(new WebDriverLogger());
                 break;
         }
-
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait
+                (Long.parseLong(PropertyManager.getInstance().getImplicitlyWait()), TimeUnit.SECONDS);
         return driver;
     }
 
     public WebDriver getDriver() {
         return driver;
-    }
-
-    public void setUpDriver(){
-        driver.manage().deleteAllCookies();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public void quit(){

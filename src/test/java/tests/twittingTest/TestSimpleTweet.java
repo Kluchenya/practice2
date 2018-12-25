@@ -4,7 +4,7 @@ package tests.twittingTest;
 import business.model.Tweet;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import setup.FunctionalTest;
+import test_setup.FunctionalTest;
 import tests.twittingTest.data.DataForTweet;
 
 public class TestSimpleTweet extends FunctionalTest {

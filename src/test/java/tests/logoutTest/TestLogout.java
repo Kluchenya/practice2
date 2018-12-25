@@ -6,7 +6,7 @@ import business.model.Logout;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import setup.FunctionalTest;
+import test_setup.FunctionalTest;
 import core.webdriver.DriverManager;
 
 import java.io.BufferedReader;
