@@ -1,17 +1,8 @@
 package data;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import model.User;
 import org.testng.annotations.DataProvider;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class DataForTest {
 
@@ -31,19 +22,7 @@ public class DataForTest {
         return generatedString;
     }
 
-    @DataProvider(name = "dataForCorrectLogin")
-    public static Iterator<Object[]> dataForLogin() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/data/correct_user.json"));
-        String json = "";
-        String line = reader.readLine();
-        while(line!=null){
-            json = json + line;
-            line = reader.readLine();
-        }
-        Gson gson = new Gson();
-        List<User> user = gson.fromJson(json, new TypeToken<List<User>>(){}.getType());
-        return user.stream().map((User u) -> new Object[] {u}).collect(Collectors.toList()).iterator();
-    }
+
 
 
     @DataProvider(name = "dataForSimpleTweet")
@@ -60,7 +39,7 @@ public class DataForTest {
     public static Object [][] dataForTweetWithImage(){
         String message = getRandomString();
         return new Object[][]{
-                {"7803691@gmail.com","1q2w3e",message, "C:\\User\\admin\\Documents\\dumps\\123.jpg"},
+                {"7803691@gmail.com","1q2w3e",message, "C:\\Login\\admin\\Documents\\dumps\\123.jpg"},
                 // {"7835177@gmail.com","1q2w3e","Message from testAccount2"}
         };
     }

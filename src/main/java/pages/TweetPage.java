@@ -39,6 +39,9 @@ public class TweetPage extends PageObject {
     private WebElement lastTweetText;
     @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]//div[2 ]/p/a")
     private WebElement lastTweetLink;
+    @FindBy(xpath = "//a[contains(@class,'DashboardProfileCard-screennameLink')]")
+    private WebElement userName;
+
 
     //Buttons
     @FindBy(xpath="(//div[@class='stream-item-footer']/div[2]/div[2]/button)[1]")
@@ -85,6 +88,9 @@ public class TweetPage extends PageObject {
     private WebElement messageAboutDeletion;
 
 
+    public String getUserName(){
+        return userName.getText();
+    }
 
     public void deleteLastTweet(){
         this.tweetMenuButton.click();

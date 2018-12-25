@@ -1,17 +1,19 @@
 package tests.loginTest;
 
+import model.Login;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
+import tests.loginTest.data.DataForLoginTest;
 
 public class TestLoginIncorrectUsers extends FunctionalTest {
 
-    private final String errMsg = "Нам не удалось подтвердить ваши данные. Проверьте их ещё раз и попробуйте снова.";
 
-    @Test
-    public void loginIncorrectUserTest(){
-        app.login(app.user);
-        Assert.assertEquals(errMsg,app.loginPage.getErrorMessage());
+    @Test(dataProvider = "dataLogin", dataProviderClass = DataForLoginTest.class)
+    public void loginIncorrectUserTest(Login login){
+        app.login(login.getInCorrUserName(),login.getInCorrPassword());
+        System.out.println(login.toString());
+        Assert.assertEquals(login.getErrMsgUser(),app.loginPage.getErrorMessage());
     }
 
 }

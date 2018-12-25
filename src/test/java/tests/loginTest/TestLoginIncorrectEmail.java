@@ -1,14 +1,16 @@
 package tests.loginTest;
 
+import model.Login;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
+import tests.loginTest.data.DataForLoginTest;
 
 public class TestLoginIncorrectEmail extends FunctionalTest {
-    private final String errMsg = "Введенные адрес электронной почты и пароль не совпадают с сохраненными в нашей базе данных. Проверьте правильность введенных данных и повторите попытку.";
-    @Test
-    public void testLoginIncorrectEmail(){
-        app.login(app.user);
-        Assert.assertEquals(errMsg,app.loginPage.getErrorMessage());
+
+    @Test(dataProvider = "dataLogin", dataProviderClass = DataForLoginTest.class)
+    public void testLoginIncorrectEmail(Login login){
+        app.login(login.getInCorrEmail(),login.getInCorrPassword());
+        Assert.assertEquals(login.getErrMsgEmail(),app.loginPage.getErrorMessage());
     }
 }
