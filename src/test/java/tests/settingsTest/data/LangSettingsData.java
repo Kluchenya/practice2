@@ -1,8 +1,8 @@
-package tests.logoutTest.data;
+package tests.settingsTest.data;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import model.Logout;
+import model.LangSettings;
 import org.testng.annotations.DataProvider;
 
 import java.io.BufferedReader;
@@ -12,10 +12,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DataForLogoutTest {
-    @DataProvider(name = "dataLogout")
+public class LangSettingsData {
+    @DataProvider(name = "langSettingsData")
     public Iterator<Object[]> dataForLogin() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/data/logout.json"));
+        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/data/langSettings.json"));
         String json = "";
         String line = reader.readLine();
         while(line!=null){
@@ -23,7 +23,7 @@ public class DataForLogoutTest {
             line = reader.readLine();
         }
         Gson gson = new Gson();
-        List<Logout> logouts = gson.fromJson(json, new TypeToken<List<Logout>>(){}.getType());
-        return logouts.stream().map((Logout lt) -> new Object[] {lt}).collect(Collectors.toList()).iterator();
+        List<LangSettings> langSettings = gson.fromJson(json, new TypeToken<List<LangSettings>>(){}.getType());
+        return langSettings.stream().map((LangSettings ls) -> new Object[] {ls}).collect(Collectors.toList()).iterator();
     }
 }

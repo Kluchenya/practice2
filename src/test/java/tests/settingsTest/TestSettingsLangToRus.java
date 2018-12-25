@@ -1,18 +1,17 @@
 package tests.settingsTest;
 
-import model.Login;
+import model.LangSettings;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
+import tests.settingsTest.data.LangSettingsData;
 
 public class TestSettingsLangToRus extends FunctionalTest {
 
-    private String alertMsg = "Спасибо, ваши настройки сохранены.";
-
-    @Test
-    public void SettingsLangTest(Login login){
-        app.corrLogin(login);
-        app.tweetPage.changeLangSettings("1q2w3e", "ru");
-        Assert.assertEquals(alertMsg, app.tweetPage.getTextFromAlertAfterChange());
+    @Test(dataProvider = "langSettingsData", dataProviderClass = LangSettingsData.class)
+    public void SettingsLangTest(LangSettings langSettings){
+        app.login(langSettings.getLogin(),langSettings.getPassword());
+        app.tweetPage.changeLangSettings(langSettings.getPassword(), langSettings.getLang().get(0));
+        Assert.assertEquals(langSettings.getAlertMsg().get(0), app.tweetPage.getTextFromAlertAfterChange());
     }
 }

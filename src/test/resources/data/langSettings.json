@@ -1,0 +1,14 @@
+[
+  {
+    "login": "7803691@gmail.com",
+    "password": "1q2w3e",
+    "lang": [
+      "ru",
+      "en"
+    ],
+    "alertMsg": [
+      "Спасибо, ваши настройки сохранены.",
+      "Thanks, your settings have been saved."
+    ]
+  }
+]
