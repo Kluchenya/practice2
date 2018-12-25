@@ -1,16 +1,19 @@
 package tests.twittingTest;
 
-import org.apache.commons.lang3.RandomStringUtils;
+import business.model.Tweet;
+import org.junit.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
+import tests.twittingTest.data.DataForTweet;
 
 public class TestTweetWithGif extends FunctionalTest {
 
-    @Test
-    public void tweetWithGifTest(){
+    @Test(dataProvider = "tweetData", dataProviderClass = DataForTweet.class)
+    public void tweetWithGifTest(Tweet tweet){
 
-        app.login("7803691@gmail.com","1q2w3e");
+        app.login(tweet.getLogin(),tweet.getPassword());
         app.tweetPage
-                .writeTweetWithGif(RandomStringUtils.randomAlphanumeric(6),"JackRussel");
+                .writeTweetWithGif(tweet.getTweetText(),tweet.getGifImageText());
+        Assert.assertTrue(app.tweetPage.gifPresentInLastTweet());
     }
 }

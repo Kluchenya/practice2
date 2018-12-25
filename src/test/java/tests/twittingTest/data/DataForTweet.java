@@ -1,8 +1,8 @@
-package tests.loginTest.data;
+package tests.twittingTest.data;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import business.model.Login;
+import business.model.Tweet;
 import org.testng.annotations.DataProvider;
 
 import java.io.BufferedReader;
@@ -12,11 +12,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DataForLoginTest {
-
-    @DataProvider(name = "dataLogin")
+public class DataForTweet {
+    @DataProvider(name = "tweetData")
     public Iterator<Object[]> dataForLogin() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/data/login.json"));
+        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/data/tweets.json"));
         String json = "";
         String line = reader.readLine();
         while(line!=null){
@@ -24,7 +23,7 @@ public class DataForLoginTest {
             line = reader.readLine();
         }
         Gson gson = new Gson();
-        List<Login> login = gson.fromJson(json, new TypeToken<List<Login>>(){}.getType());
-        return login.stream().map((Login l) -> new Object[] {l}).collect(Collectors.toList()).iterator();
+        List<Tweet> tweets = gson.fromJson(json, new TypeToken<List<Tweet>>(){}.getType());
+        return tweets.stream().map((Tweet tw) -> new Object[] {tw}).collect(Collectors.toList()).iterator();
     }
 }

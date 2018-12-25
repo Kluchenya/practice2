@@ -1,15 +1,16 @@
 package tests.twittingTest;
 
-import model.Login;
+import business.model.Tweet;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
+import tests.twittingTest.data.DataForTweet;
 
 public class TestDeleteTweet extends FunctionalTest {
 
-    @Test
-    public void deleteLastTweetTest(Login login){
-        app.corrLogin(login);
+    @Test(dataProvider = "tweetData", dataProviderClass = DataForTweet.class)
+    public void deleteLastTweetTest(Tweet tweet){
+        app.login(tweet.getLogin(), tweet.getPassword());
         String countOfTweetBefore = app.servicePage.getCountOfTweets();
         app.tweetPage.deleteLastTweet();
         app.servicePage.refereshPage();

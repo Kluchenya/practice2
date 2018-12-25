@@ -1,6 +1,6 @@
-package utils;
+package core.utils;
 
-import utils.Logging.Log;
+import core.utils.Logging.Log;
 
 import java.io.FileInputStream;
 import java.io.IOException;

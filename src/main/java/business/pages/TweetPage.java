@@ -1,12 +1,12 @@
-package pages;
+package business.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import utils.Logging.Log;
+import core.utils.Logging.Log;
 
-import static utils.JSHelper.HighlightElement;
+import static core.utils.JSHelper.HighlightElement;
 
 public class TweetPage extends PageObject {
 
@@ -115,6 +115,17 @@ public class TweetPage extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(this.newTweetBar));
     }
 
+    public void writeTweetWithTwoImage(String message, String pathToFile, String pathToFile2) {
+        this.tweetBoxSmall.click();
+        this.tweetBoxBig.sendKeys(message);
+        this.addImageButton.sendKeys(pathToFile);
+        this.addImageButton.sendKeys(pathToFile2);
+        wait.until(ExpectedConditions.visibilityOf(this.previewImage));
+        this.tweetButton.click();
+        wait.until(ExpectedConditions.visibilityOf(this.newTweetBar));
+    }
+
+
     public void writeTweetWithGif(String message, String gifText){
         this.tweetBoxSmall.click();
         this.tweetBoxBig.sendKeys(message);
@@ -147,13 +158,26 @@ public class TweetPage extends PageObject {
     public Boolean imagePresntInTwitt(){
         WebElement image = this.lastAddedImage;
         if(image.isDisplayed()){
-            System.out.println("Image is present"+image.getText());
+            Log.info("Image is present"+image.getText());
             return true;
         }else {
-            System.out.println("Image is`t present");
+            Log.error("Image is`t present");
             return false;
         }
     }
+
+
+    public Boolean gifPresentInLastTweet(){
+        if(this.gifInLastTweet.isDisplayed()){
+            Log.info("Gif present in last tweet" + this.gifInLastTweet.getText());
+            return true;
+        }else {
+            Log.error("Gif is`t present in last tweet");
+            return false;
+        }
+    }
+
+
 
     public void changeLangSettings(String password, String lang){
         this.userMenuButton.click();
@@ -165,7 +189,7 @@ public class TweetPage extends PageObject {
     }
 
 
-    public String getTextFromAlertAfterChange(){
+    public String getTextFromAlertAfterChangeLng(){
         return this.alertAfterChangeLng.getText();
     }
 

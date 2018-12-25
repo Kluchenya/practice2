@@ -1,10 +1,10 @@
-package pages;
+package business.pages;
 
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import webdriver.DriverManager;
+import core.webdriver.DriverManager;
 
 class PageObject{
 

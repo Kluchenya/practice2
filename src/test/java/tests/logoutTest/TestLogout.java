@@ -2,12 +2,12 @@ package tests.logoutTest;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import model.Logout;
+import business.model.Logout;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
-import webdriver.DriverManager;
+import core.webdriver.DriverManager;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

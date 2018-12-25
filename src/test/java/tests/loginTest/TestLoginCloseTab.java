@@ -1,13 +1,13 @@
 package tests.loginTest;
 
-import model.Login;
+import business.model.Login;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
 import tests.loginTest.data.DataForLoginTest;
-import utils.JSHelper;
-import utils.PropertyManager;
-import webdriver.DriverManager;
+import core.utils.JSHelper;
+import core.utils.PropertyManager;
+import core.webdriver.DriverManager;
 
 public class TestLoginCloseTab extends FunctionalTest {
 

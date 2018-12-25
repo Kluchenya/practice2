@@ -1,12 +1,12 @@
-package utils;
+package core.utils;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.Logging.Log;
-import webdriver.DriverManager;
+import core.utils.Logging.Log;
+import core.webdriver.DriverManager;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,11 +1,11 @@
-package pages;
+package business.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static utils.JSHelper.HighlightElement;
-import static utils.JSHelper.UnhighlightElement;
+import static core.utils.JSHelper.HighlightElement;
+import static core.utils.JSHelper.UnhighlightElement;
 
 public class MessagePage extends PageObject {
 

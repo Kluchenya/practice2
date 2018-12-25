@@ -1,6 +1,6 @@
 package tests.loginTest;
 
-import model.Login;
+import business.model.Login;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;

@@ -1,9 +1,9 @@
-package pages;
+package business.pages;
 
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.Logging.Log;
+import core.utils.Logging.Log;
 
 public class FirstPage extends PageObject {
 

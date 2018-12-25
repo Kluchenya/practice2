@@ -2,7 +2,7 @@ package tests.settingsTest.data;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import model.LangSettings;
+import business.model.LangSettings;
 import org.testng.annotations.DataProvider;
 
 import java.io.BufferedReader;
@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LangSettingsData {
+
     @DataProvider(name = "langSettingsData")
     public Iterator<Object[]> dataForLogin() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/data/langSettings.json"));

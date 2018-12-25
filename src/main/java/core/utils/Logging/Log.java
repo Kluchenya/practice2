@@ -1,4 +1,4 @@
-package utils.Logging;
+package core.utils.Logging;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

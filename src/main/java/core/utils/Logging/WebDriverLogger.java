@@ -1,4 +1,4 @@
-package utils.Logging;
+package core.utils.Logging;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

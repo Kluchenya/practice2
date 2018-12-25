@@ -2,19 +2,14 @@
   {
     "login": "7803691@gmail.com",
     "password": "1q2w3e",
-    "pathToImage": [
-      "src/resources/123.jpg",
-      "src/"
-    ],
-    "tweetText": [
-      "someText1",
-      "someText3",
-      "someText2"
-    ],
-    "messageText": [
-      "someMessage2",
-      "someMessage3",
-      "someMessage1"
-    ]
+    "tweetText": "someTextFromJson",
+    "messageText": "someMessage",
+    "pathToImage_1": "d:/project/practice2/src/test/resources/img/123.jpg",
+    "pathToImage_2": "d:/project/practice2/src/test/resources/img/qa.png",
+    "comment": "someComment",
+    "gifImageText": "car",
+    "corrLink": "https://www.onliner.by/",
+    "InCorrLink": "https://www.onliner.cy",
+    "errMsgInLinkTest": "ERR_NAME_NOT_RESOLVED"
   }
 ]

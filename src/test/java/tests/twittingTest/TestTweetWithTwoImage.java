@@ -6,14 +6,12 @@ import org.testng.annotations.Test;
 import setup.FunctionalTest;
 import tests.twittingTest.data.DataForTweet;
 
-public class TestTweetWithImage extends FunctionalTest {
-
+public class TestTweetWithTwoImage extends FunctionalTest {
     @Test(dataProvider = "tweetData", dataProviderClass = DataForTweet.class)
-    public void tweetWithImageTest(Tweet tweet) {
+    public void tweetWithTwoImageTest(Tweet tweet) {
         app.login(tweet.getLogin(), tweet.getPassword());
-        app.tweetPage.writeTweetWithImage(tweet.getTweetText(),tweet.getPathToImage_1());
+        app.tweetPage.writeTweetWithTwoImage(tweet.getTweetText(),tweet.getPathToImage_1(), tweet.getPathToImage_2());
         Assert.assertTrue(app.tweetPage.imagePresntInTwitt());
         app.tweetPage.logout();
     }
-
 }

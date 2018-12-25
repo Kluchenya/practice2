@@ -5,15 +5,15 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import utils.Logging.Log;
-import utils.PropertyManager;
-import utils.Logging.TestLogHelper;
-import webdriver.DriverManager;
+import core.utils.Logging.Log;
+import core.utils.PropertyManager;
+import core.utils.Logging.TestLogHelper;
+import core.webdriver.DriverManager;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-import static utils.JSHelper.TakeScreenShot;
+import static core.utils.JSHelper.TakeScreenShot;
 
 
 public class FunctionalTest {

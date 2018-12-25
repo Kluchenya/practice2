@@ -1,7 +1,7 @@
 package setup;
 
-import model.Login;
-import pages.*;
+import business.model.Login;
+import business.pages.*;
 
 
 public class ApplicationManager {

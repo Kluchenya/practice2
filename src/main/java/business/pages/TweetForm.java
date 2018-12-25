@@ -1,4 +1,4 @@
-package pages;
+package business.pages;
 
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.annotations.Name;

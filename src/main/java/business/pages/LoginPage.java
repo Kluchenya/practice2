@@ -1,11 +1,11 @@
-package pages;
+package business.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import utils.Logging.Log;
+import core.utils.Logging.Log;
 
-import static utils.JSHelper.HighlightElement;
+import static core.utils.JSHelper.HighlightElement;
 
 public class LoginPage extends PageObject {
 

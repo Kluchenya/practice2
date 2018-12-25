@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
-import webdriver.DriverManager;
+import core.webdriver.DriverManager;
 
 //@Listeners(ScreenShotOnFailure.class)
 public class TestMessageDelivered extends FunctionalTest {

@@ -1,6 +1,6 @@
 package tests.settingsTest;
 
-import model.LangSettings;
+import business.model.LangSettings;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
@@ -12,6 +12,6 @@ public class TestSettingsLangToEng extends FunctionalTest {
     public void SettingsLangTest(LangSettings langSettings){
         app.login(langSettings.getLogin(),langSettings.getPassword());
         app.tweetPage.changeLangSettings(langSettings.getPassword(), langSettings.getLang().get(1));
-        Assert.assertEquals(langSettings.getAlertMsg().get(1), app.tweetPage.getTextFromAlertAfterChange());
+        Assert.assertEquals(langSettings.getAlertMsg().get(1), app.tweetPage.getTextFromAlertAfterChangeLng());
     }
 }

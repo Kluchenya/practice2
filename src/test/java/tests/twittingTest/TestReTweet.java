@@ -3,7 +3,7 @@ package tests.twittingTest;
 import data.DataForTest;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
-import webdriver.DriverManager;
+import core.webdriver.DriverManager;
 
 public class TestReTweet extends FunctionalTest {
 

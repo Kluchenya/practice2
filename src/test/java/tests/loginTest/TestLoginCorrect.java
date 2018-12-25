@@ -1,11 +1,11 @@
 package tests.loginTest;
 
-import model.Login;
+import business.model.Login;
 import org.junit.Assert;
 import org.testng.annotations.Test;
 import setup.FunctionalTest;
 import tests.loginTest.data.DataForLoginTest;
-import webdriver.DriverManager;
+import core.webdriver.DriverManager;
 
 public class TestLoginCorrect extends FunctionalTest {
 

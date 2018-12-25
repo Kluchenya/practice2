@@ -1,9 +1,9 @@
-package pages;
+package business.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.Logging.Log;
-import webdriver.DriverManager;
+import core.utils.Logging.Log;
+import core.webdriver.DriverManager;
 
 import java.util.ArrayList;
 import java.util.List;
