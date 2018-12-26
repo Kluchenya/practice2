@@ -6,10 +6,7 @@ import core.utils.Logging.TestLogHelper;
 import core.utils.PropertyManager;
 import core.webdriver.DriverManager;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -22,15 +19,20 @@ public class FunctionalTest {
 
     protected final ApplicationManager app = new ApplicationManager();
 
+    @BeforeSuite
+    public void setUpSuite() {
+        DriverManager.getInstance().getDriver().get(PropertyManager.getInstance().getUrl());
+    }
+
     @BeforeClass
     public void setUp() throws Exception {
         TestLogHelper.startTestLogging(getTestId());
-        DriverManager.getInstance().getDriver().get(PropertyManager.getInstance().getUrl());
+
     }
 
     @BeforeMethod
     public void setUpLogin(Method method, Object[] param) {
-
+    //    DriverManager.getInstance().getDriver().get(PropertyManager.getInstance().getUrl());
         Log.info("Start test " + method.getName() + " with parameters - " + Arrays.asList(param).toString());
     }
 
@@ -46,8 +48,13 @@ public class FunctionalTest {
     }
 
     @AfterClass(alwaysRun = true)
-    public void tearDown() {
+    public void tearDownClass() {
         TestLogHelper.stopTestLogging();
+       // DriverManager.getInstance().quit();
+    }
+
+    @AfterSuite
+    public void tearDownSuite(){
         DriverManager.getInstance().quit();
     }
 

@@ -4,6 +4,7 @@
     <parameter name="login_1" value="7803691@gmail.com"/>
     <parameter name="password_1" value="1q2w3e"/>
     <parameter name="message" value="hi testAccount2d"/>
+    <parameter name="sendToAccount" value="@testAcc02011488"/>
     <parameter name="login_2" value="7835177@gmail.com"/>
     <parameter name="password_2" value="1q2w3e"/>
     <test name="send message and check it" >
