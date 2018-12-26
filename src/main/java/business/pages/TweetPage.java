@@ -38,6 +38,8 @@ public class TweetPage extends PageObject {
     //Service block
     @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]//div[2 ]/p")
     private WebElement lastTweetText;
+    @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]//div[2 ]/div/p")
+    private WebElement lastReTweetText;
     @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]//div[2 ]/p/a")
     private WebElement lastTweetLink;
     @FindBy(xpath = "//a[contains(@class,'DashboardProfileCard-screennameLink')]")
@@ -137,7 +139,7 @@ public class TweetPage extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(this.newTweetBar));
     }
 
-    public void reTweet(){
+    public void reTweetClick(){
         this.reTweetButton.click();
     }
 
@@ -147,6 +149,10 @@ public class TweetPage extends PageObject {
 
     public String getMessageFromLastTweet(){
         return this.lastTweetText.getText();
+    }
+
+    public String getMessageFromLastReTweet(){
+        return this.lastReTweetText.getText();
     }
 
     public void clickOnLinkLastTweet(){
