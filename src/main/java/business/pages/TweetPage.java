@@ -1,10 +1,12 @@
 package business.pages;
 
+import core.utils.Logging.Log;
+import core.webdriver.DriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import core.utils.Logging.Log;
 
 import static core.utils.JSHelper.HighlightElement;
 
@@ -33,7 +35,6 @@ public class TweetPage extends PageObject {
     private WebElement closeGifPreview;
     @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]/div/div[2]/div[3]//video")
     private WebElement gifInLastTweet;
-
     //Service block
     @FindBy(xpath = "(//li[@data-item-type='tweet'])[1]//div[2 ]/p")
     private WebElement lastTweetText;
@@ -41,6 +42,8 @@ public class TweetPage extends PageObject {
     private WebElement lastTweetLink;
     @FindBy(xpath = "//a[contains(@class,'DashboardProfileCard-screennameLink')]")
     private WebElement userName;
+    @FindBy(xpath = "//div[contains(@class,'timeline-end has-items')]//button")
+    private WebElement backToTheTopBtn;
 
 
     //Buttons
@@ -57,8 +60,6 @@ public class TweetPage extends PageObject {
 
     @FindBy(className="new-tweets-bar")
     private WebElement newTweetBar;
-    @FindBy(xpath="//div[contains(@class,'timeline-end has-items')]//button")
-    private WebElement endOfPage;
     @FindBy(xpath="(//li[@data-item-type='tweet'])[1]//img[@data-aria-label-part]")
     private WebElement lastAddedImage;
 
@@ -86,7 +87,6 @@ public class TweetPage extends PageObject {
     private WebElement deleteInModalWinButton;
     @FindBy(xpath= "//div[@id='message-drawer']//span[contains(@class,'message-text')]")
     private WebElement messageAboutDeletion;
-
 
     public String getUserName(){
         return userName.getText();
@@ -125,7 +125,6 @@ public class TweetPage extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(this.newTweetBar));
     }
 
-
     public void writeTweetWithGif(String message, String gifText){
         this.tweetBoxSmall.click();
         this.tweetBoxBig.sendKeys(message);
@@ -137,7 +136,6 @@ public class TweetPage extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(this.gifInLastTweet));
         wait.until(ExpectedConditions.visibilityOf(this.newTweetBar));
     }
-
 
     public void reTweet(){
         this.reTweetButton.click();
@@ -166,7 +164,6 @@ public class TweetPage extends PageObject {
         }
     }
 
-
     public Boolean gifPresentInLastTweet(){
         if(this.gifInLastTweet.isDisplayed()){
             Log.info("Gif present in last tweet" + this.gifInLastTweet.getText());
@@ -177,8 +174,6 @@ public class TweetPage extends PageObject {
         }
     }
 
-
-
     public void changeLangSettings(String password, String lang){
         this.userMenuButton.click();
         this.settingsButton.click();
@@ -188,9 +183,14 @@ public class TweetPage extends PageObject {
         this.saveChangesButton.click();
     }
 
-
     public String getTextFromAlertAfterChangeLng(){
         return this.alertAfterChangeLng.getText();
+    }
+
+    public void scrollPageDownToEnd(){
+        while(!this.backToTheTopBtn.isDisplayed()){
+            ((JavascriptExecutor) DriverManager.getInstance().getDriver()).executeScript("window.scroll(0, document.body.scrollHeight)");
+        }
     }
 
     public void logout(){
