@@ -3,6 +3,7 @@ package tests.twittingTest.data;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import business.model.Tweet;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.DataProvider;
 
 import java.io.BufferedReader;
@@ -22,8 +23,9 @@ public class DataForTweet {
             json = json + line;
             line = reader.readLine();
         }
+        String jsonReplaced = json.replaceAll("[$]\\d\\d\\d\\d\\d[$]", RandomStringUtils.randomAlphanumeric(5));
         Gson gson = new Gson();
-        List<Tweet> tweets = gson.fromJson(json, new TypeToken<List<Tweet>>(){}.getType());
+        List<Tweet> tweets = gson.fromJson(jsonReplaced, new TypeToken<List<Tweet>>(){}.getType());
         return tweets.stream().map((Tweet tw) -> new Object[] {tw}).collect(Collectors.toList()).iterator();
     }
 }

@@ -2,7 +2,7 @@
   {
     "login": "7803691@gmail.com",
     "password": "1q2w3e",
-    "tweetText": "someTextFromJson",
+    "tweetText": "someText$12345$FromJson",
     "messageText": "someMessage",
     "pathToImage_1": "d:/project/practice2/src/test/resources/img/123.jpg",
     "pathToImage_2": "d:/project/practice2/src/test/resources/img/qa.png",
